@@ -17,7 +17,7 @@ func bit_permute(x, m, shift byte) byte {
 /** Feistel crypto function (which is a result of lots of random tries :D) */
 /** Consists of both s-block and p-block */
 func f (key byte, block byte) byte {
-	x := byte(key*key + block) // mod by 256 because it's byte
+	x := byte(key + block) // mod by 256 because it's byte
 	x = bit_permute(x, 0x01, 8)
 	x = bit_permute(x, 0x05, 4)
 	x = bit_permute(x, 0x40, 1)
@@ -30,7 +30,7 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	//var hash uint16 = 0
-	a := byte(63)
+	a := byte(87)
 	b := byte(206)
 
 	// Hash data itself
